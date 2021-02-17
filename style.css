@@ -1,19 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
 
-*{
+:root{
     margin: 0;
     padding: 0;
     border: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
+    
+    --bg: #1b2029;
+    --color-text: #FFFFFF;
+    --color-h1: #13d3c9;
+    --bg-input: #161923;
+    --color-border: #040b18;
+    --color-or: rgba(255, 255, 255, 0.3);
+    
+}
+
+.light-mode {
+    --bg: #ffffff;
+    --color-text: #1b2029;
+    --color-h1: #13d3c9;
+    --bg-input: #c9c9c9;
+    --color-border: #9e9e9e;
+    --color-or:  rgba(46, 46, 46, 0.3);
 }
 
 body{
-    background: #1b2029;
-    color: white;
+    background: var(--bg);
+    color: var(--color-text);
     font-weight: 500;
     display: flex;
-    min-height: 100vh;
 }
 
 main{
@@ -25,7 +41,7 @@ main{
 }
 
 main h1{
-    color: #13d3c9;
+    color: var(--color-h1);
     font-size: 3rem;
     margin-bottom: 3rem;
 }
@@ -55,7 +71,7 @@ main .alternative {
 main .alternative span {
     font-size: 1.1rem;
     font-weight: 400;
-    color: rgba(255, 255, 255, 0.3);
+    color: var(--color-or);
     position: relative;
 }
 
@@ -66,7 +82,7 @@ main .alternative span::before, main .alternative span::after {
     width: 100px;
     bottom: 50%;
     right: 50px;
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: var(--color-or);
 }
 
 main .alternative span::after {
@@ -90,7 +106,7 @@ main form label span {
 }
 
 main form input {
-    background: #161923;
+    background: var(--bg-input);
     width: 300px;
     height: 50px;
     padding: 0 0.5rem;
@@ -98,18 +114,18 @@ main form input {
     outline: none;
     color: rgba(166, 166, 166);
     font-size: 1rem;
-    border: 1px solid #040b18;
+    border: 1px solid var(--color-border);
     border-radius: 8px;
 }
 
 main form input[type="submit"] {
     cursor: pointer;
     width: 50%;
-    margin-top: 2rem;
+    margin-top: 1.3rem;
     border: none;
     border-radius: 32px;
     background: #13d3c9;
-    color: white;
+    color: var(--color-text);
     font-size: 1.1rem;
     transition: all .3s ease-in-out;
 }
@@ -138,3 +154,56 @@ section.images .circle {
     clip-path: circle(40% at right 80%);
     z-index: -1;
 }
+
+.switch {
+    position: absolute;
+    margin-left: -9999px;
+    visibility: hidden;
+  }
+  
+.switch + label {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+}
+
+.switch + label {
+    padding: 2px;
+    width: 52px;
+    height: 27px;
+    background-color: var(--color-border), rgba(46, 46, 46, 0.3);
+    border-radius: 100px;
+}
+
+.switch + label:before, .switch + label:after {
+  display: block;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  bottom: 1px;
+  content: '';
+}
+
+.switch + label:before {
+  right: 1px;
+  background-color: var(--bg-input);
+  border-radius: 60px;
+  transition: all 0.4s;
+}
+
+.switch + label:after {
+  width: 30px;
+  background-color: #fff;
+  border-radius: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s;
+}
+
+.switch:checked + label:before {
+    background-color: #13d3c9;
+  }
+  .switch:checked + label:after {
+    transform: translateX(30px);
+  }
